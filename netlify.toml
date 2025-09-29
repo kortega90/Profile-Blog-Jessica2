@@ -1,0 +1,10 @@
+[[redirects]]
+from = "/index.html"
+to = "/"
+status = 301
+force = true  # <- necessário porque /index.html existe
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
