@@ -1,4 +1,3 @@
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -209,8 +208,8 @@ p {
 }
 
 #header .logo img {
-  height: 80px;
-  width: 120px ;
+  height: 100px;
+  width: 100%;
 }
 
 @media (max-width: 992px) {
@@ -442,53 +441,98 @@ p {
 }
 
 /*--------------------------------------------------------------
-# Hero
+# Hero (ajustado para melhor leitura)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Hero (RESPONSIVO - sem height/padding fixo)
 --------------------------------------------------------------*/
 #hero {
+  position: relative;
   background: url("../img/home-bg.jpg");
-  height: 130vh;
+  min-height: 100vh;
   width: 100%;
-  background-size:cover;
-  background-position: initial;
+  background-size: cover;
+  background-position: center;
 }
 
+/* overlay leve para leitura */
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .30);
+  z-index: 1;
+}
+
+/* container do conteúdo */
 #hero .hero-content {
-  height: 100vh;
-  text-align: left;
-  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-top: 600px;
+  align-items: center;
+  /* centraliza verticalmente */
+  justify-content: flex-start;
+  /* mantém para a esquerda */
+  padding-top: 110px;
+  /* espaço do header fixo */
+  padding-bottom: 40px;
 }
 
-.hero-content h1 {
-  font-size: 40px;
+/* Card do texto */
+#hero .hero-card {
+  width: 100%;
+  max-width: clamp(360px, 52vw, 880px);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+}
+
+/* Tipografia do hero (sem quebrar no mobile) */
+#hero .hero-card h1 {
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 10px;
   text-transform: uppercase;
-  color:#292929;
+  color: #292929;
+  margin-bottom: 10px;
 }
 
-.hero-content p {
-  font-size: 13px;
-  letter-spacing: 3px;
-  margin-top: 0;
-  margin-bottom:2px;
-  text-transform: capitalize;
-  color: #000;
-  font-weight: 400;
+#hero .hero-card p {
+  margin: 10px 0;
+  color: #1a1a1a;
 }
 
-.hero-content .list-social li {
-  float: left;
-  margin-right: 20px;
+/* Ícones sociais lado a lado */
+#hero .list-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
 }
 
-.hero-content .list-social li i {
-  color: #fff;
-  font-size: 15px;
+#hero .list-social li {
+  float: none;
+  /* mata o float antigo */
+  margin: 0;
 }
+
+#hero .list-social li i {
+  color: #111;
+  /* card é claro, então ícone escuro */
+  font-size: 18px;
+}
+
+/* Desktop: mantém enquadramento parecido com o original (pessoa à direita) */
+@media (min-width: 992px) {
+  #hero {
+    background-position: initial;
+  }
+}
+
+
 
 /*--------------------------------------------------------------
 # Breadcrumbs
@@ -1373,6 +1417,66 @@ blockquote {
     float: none;
     display: inline-block;
   }
+
+    /* Hero: mostrar mais a foto */
+  #hero {
+    background-position: center top;
+    min-height: 100vh;
+  }
+
+  /* Overlay mais leve que no desktop */
+  #hero::before {
+    background: rgba(0, 0, 0, .18);
+  }
+
+  /* Conteúdo: desce um pouco pra não tampar o rosto */
+  #hero .hero-content {
+    padding-top: 110px;   /* header fixo */
+    padding-bottom: 24px;
+    align-items: flex-end; /* em vez de center */
+    width: 100%;
+  }
+
+  /* Card: não ocupa tudo, deixa a imagem aparecer */
+  #hero .hero-card {
+    max-width: 100%;
+    margin-top: 90px;     /* desce o card */
+    padding: 16px;
+    background: rgba(255, 255, 255, .80); /* mais transparente */
+    backdrop-filter: blur(3px);
+  }
+
+  /* Tipografia: leve redução */
+  #hero .hero-card h1 {
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  #hero .hero-card p,
+  #hero .hero-card li {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  /* Botões um pouco menores */
+  #hero .hero-card .btn {
+    height: 44px;
+    line-height: 44px;
+    font-size: 11px;
+    padding: 0 18px;
+  }
+
+  /* Listas mais compactas */
+  #hero .hero-card ul {
+    margin-bottom: 10px;
+    padding-left: 18px;
+  }
+
+  /* Ícones */
+  #hero .hero-card .list-unstyled i {
+    font-size: 16px;
+  }
 }
 
 /** Width between 480px to 0
@@ -1384,8 +1488,10 @@ blockquote {
   nav {
     padding: 20px 15px;
   }
+
   .navbar ul {
-    flex-direction: column; /* Altera a direção dos itens do menu para vertical */
+    flex-direction: column;
+    /* Altera a direção dos itens do menu para vertical */
   }
 
   .nav-menu {
@@ -1411,11 +1517,11 @@ blockquote {
     padding-top: 15px;
     display: block;
   }
+
   #header {
-    padding: 10px 15px; /* Adicione o padding desejado para o cabeçalho */
-    box-sizing: border-box; /* Garante que o padding esteja incluído na largura total */
-    max-width: 488px;
-    width: 100%; /* Define a largura para ocupar toda a largura da tela */
+    padding: 10px 15px;
+    box-sizing: border-box;
+    width: 100%;
   }
 
 
@@ -1465,76 +1571,126 @@ blockquote {
     float: none;
     display: inline-block;
   }
+
   .mobile-nav-toggle {
-    display: block; /* Exibe o ícone do menu mobile */
+    display: block;
+    /* Exibe o ícone do menu mobile */
   }
 
   /* Estilos para a seção de contato */
   #contact {
-    padding: 20px 15px; /* Adicione o padding desejado para a seção de contato */
-    width: 100%; /* Define a largura para ocupar toda a largura da tela */
-    box-sizing: border-box; /* Garante que o padding esteja incluído na largura total */
+    padding: 20px 15px;
+    /* Adicione o padding desejado para a seção de contato */
+    width: 100%;
+    /* Define a largura para ocupar toda a largura da tela */
+    box-sizing: border-box;
+    /* Garante que o padding esteja incluído na largura total */
   }
+
   #contact .row {
-    flex-direction: column; /* Altera a direção das colunas para vertical */
+    flex-direction: column;
+    /* Altera a direção das colunas para vertical */
   }
 
   #contact .col-lg-6 {
-    width: 100%; /* Define a largura das colunas para ocupar toda a largura disponível */
-    margin-bottom: 20px; /* Adiciona espaço entre as colunas */
+    width: 100%;
+    /* Define a largura das colunas para ocupar toda a largura disponível */
+    margin-bottom: 20px;
+    /* Adiciona espaço entre as colunas */
   }
 
   #contact iframe {
-    width: 100%; /* Define a largura do iframe para ocupar toda a largura disponível */
-    max-width: 100%; /* Garante que o iframe não ultrapasse a largura da tela */
-    height: 1050px; /* Permite que a altura do iframe seja ajustada automaticamente */
+    width: 100%;
+    /* Define a largura do iframe para ocupar toda a largura disponível */
+    max-width: 100%;
+    /* Garante que o iframe não ultrapasse a largura da tela */
+    height: 1050px;
+    /* Permite que a altura do iframe seja ajustada automaticamente */
   }
 
+  /* HERO (mobile) - ajustes leves */
   #hero {
-    height: 65vh;
-    width: 100%;
-    max-width: 500px;
-    background-size:cover;
-    background-position: center inherit ;
+    background-position: center;
+    min-height: 100vh;
   }
-  
+
+
+  #hero::before {
+    background: rgba(0, 0, 0, .10);
+    /* mais foto aparecendo */
+  }
+
   #hero .hero-content {
-    height: 60vh;
-    text-align: left;
-    width: 100%;
-    display: flex;
-    justify-content:end;
-    margin-top: 80px;
-    padding-top: 450px;
+
+    align-items: flex-end;
+    padding-top: 95px;
+    /* header fixo */
+    padding-bottom: 25px;
   }
 
-  .hero-content h1 {
-  font-size: 13px;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  color:#292929;
-}
+  #hero .hero-card {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, .78) 0%,
+        rgba(255, 255, 255, .60) 45%,
+        rgba(255, 255, 255, .45) 100%);
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    max-width: 100%;
+    padding: 16px;
 
-.hero-content p {
-  font-size: 10px;
-  letter-spacing: 2px;
-  margin-top: 0;
-  margin-bottom:1px;
-  text-transform: capitalize;
-  color: #000000;
-  font-weight: 600;
-}
+    /* opcional: deixa o card menos “pesado” */
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .12);
+  }
 
-.hero-content .list-social li {
-  float: left;
-  margin-right: 20px;
-}
+  #hero .hero-card h1 {
+    font-size: 18px;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
 
-.hero-content .list-social li i {
-  color: #fff;
-  font-size: 11px;
-}
+  /* Texto base menor */
+  #hero .hero-card p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 8px 0;
+  }
+
+  /* Subtítulos (Para Escritórios / Atendimento Particular) */
+  #hero .hero-card .fw-bold {
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+
+  /* Listas mais compactas */
+  #hero .hero-card ul {
+    margin: 0 0 10px 0;
+    padding-left: 18px;
+  }
+
+  #hero .hero-card li {
+    font-size: 12px;
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+
+  /* Botões menores e mais baixos */
+  #hero .hero-card .btn {
+    height: 42px;
+    line-height: 42px;
+    font-size: 11px;
+    padding: 0 18px;
+  }
+
+  /* Dá uma “afinada” no gap dos botões */
+  #hero .hero-card .gap-2 {
+    gap: 8px !important;
+  }
+
+  /* Ícones sociais um pouco menores */
+  #hero .hero-card .list-unstyled i {
+    font-size: 16px;
+  }
 }
 
 /** Width between 320px to 0
@@ -1542,9 +1698,12 @@ blockquote {
  */
 @media (max-width: 320px) {
   #header {
-    padding: 10px 15px; /* Adicione o padding desejado para o cabeçalho */
-    width: 100%; /* Define a largura para ocupar toda a largura da tela */
-    box-sizing: border-box; /* Garante que o padding esteja incluído na largura total */
+    padding: 10px 15px;
+    /* Adicione o padding desejado para o cabeçalho */
+    width: 100%;
+    /* Define a largura para ocupar toda a largura da tela */
+    box-sizing: border-box;
+    /* Garante que o padding esteja incluído na largura total */
   }
 
   /* Navbar */
@@ -1553,7 +1712,8 @@ blockquote {
   }
 
   .navbar ul {
-    flex-direction: column; /* Altera a direção dos itens do menu para vertical */
+    flex-direction: column;
+    /* Altera a direção dos itens do menu para vertical */
   }
 
   .nav-menu {
@@ -1632,14 +1792,19 @@ blockquote {
     display: inline-block;
     margin-right: 0;
   }
+
   .mobile-nav-toggle {
-    display: block; /* Exibe o ícone do menu mobile */
+    display: block;
+    /* Exibe o ícone do menu mobile */
   }
 
   /* Estilos para a seção de contato */
   #contact {
-    padding: 20px 15px; /* Adicione o padding desejado para a seção de contato */
-    width: 100%; /* Define a largura para ocupar toda a largura da tela */
-    box-sizing: border-box; /* Garante que o padding esteja incluído na largura total */
+    padding: 20px 15px;
+    /* Adicione o padding desejado para a seção de contato */
+    width: 100%;
+    /* Define a largura para ocupar toda a largura da tela */
+    box-sizing: border-box;
+    /* Garante que o padding esteja incluído na largura total */
   }
 }
