@@ -494,7 +494,7 @@ p {
 
 /* Tipografia do hero (sem quebrar no mobile) */
 #hero .hero-card h1 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
   color: #292929;
