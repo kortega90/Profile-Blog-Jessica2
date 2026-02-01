@@ -590,13 +590,15 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    document.getElementById('form-whatsapp')?.addEventListener('submit', function (e) {
+    const form = document.getElementById('form-whatsapp');
+
+    form?.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const nome = document.getElementById('nome').value.trim();
-      const cidade = document.getElementById('cidade').value.trim();
-      const servico = document.getElementById('servico').value.trim();
-      const mensagem = document.getElementById('mensagem').value.trim();
+      const nome = document.getElementById('nome')?.value.trim() || '';
+      const cidade = document.getElementById('cidade')?.value.trim() || '';
+      const servico = document.getElementById('servico')?.value || '';
+      const mensagem = document.getElementById('mensagem')?.value.trim() || '';
 
       const texto =
         `Olá! Meu nome é ${nome}.\n` +
@@ -606,7 +608,6 @@
 
       const url = `https://wa.me/554391493081?text=${encodeURIComponent(texto)}`;
 
-      // evento GA opcional
       if (typeof gtag === 'function') {
         gtag('event', 'whatsapp_form_submit', {
           event_category: 'Contato',
@@ -615,7 +616,8 @@
         });
       }
 
-      window.open(url, '_blank');
+      const w = window.open(url, '_blank');
+      if (!w) window.location.href = url;
     });
   </script>
   
