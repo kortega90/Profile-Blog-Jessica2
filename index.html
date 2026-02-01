@@ -11,7 +11,7 @@
 
     gtag('config', 'G-LHRTLCWK68');
   </script>
-  
+
   <meta charset="utf-8" />
 
   <title>Paralegal PJ em Londrina | Apoio para Escritórios e Atendimento Particular</title>
@@ -56,10 +56,10 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-  
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet" />
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -93,7 +93,7 @@
     ]
   }
   </script>
-  </head>
+</head>
 
 <body>
   <!-- ======= Header ======= -->
@@ -136,7 +136,12 @@
 
               <div class="d-flex gap-2 flex-wrap mb-3">
                 <a href="https://wa.me/554391493081?text=Olá!%20Quero%20um%20orçamento%20para%20serviço%20paralegal."
-                  class="btn btn-dark">
+                  class="btn btn-dark" 
+                  onclick="gtag('event', 'whatsapp_click', {
+                    'event_category': 'B2B_e_Particular',
+                    'event_label': 'Botao_Topo',
+                    'transport_type': 'beacon'
+                  });">
                   Falar no WhatsApp
                 </a>
 
