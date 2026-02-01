@@ -493,7 +493,7 @@ p {
 }
 
 /* Tipografia do hero (sem quebrar no mobile) */
-#hero .hero-card h1 {
+#hero .hero-card h1,h2 {
   font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1205,7 +1205,7 @@ blockquote {
   }
 
   /* About */
-  .head-info .header-content .cmaster h1 {
+  .head-info .header-content .cmaster h1,h2 {
     font-size: 32px;
   }
 
@@ -1288,7 +1288,7 @@ blockquote {
   }
 
   /* About */
-  .head-info .header-content h1 {
+  .head-info .header-content h1,h2 {
     font-size: 32px;
   }
 
@@ -1371,7 +1371,7 @@ blockquote {
   }
 
   /* About */
-  .head-info .header-content h1 {
+  .head-info .header-content h1,h2 {
     font-size: 32px;
   }
 
@@ -1447,7 +1447,7 @@ blockquote {
   }
 
   /* Tipografia: leve redução */
-  #hero .hero-card h1 {
+  #hero .hero-card h1,h2 {
     font-size: 22px;
     line-height: 1.2;
     margin-bottom: 8px;
