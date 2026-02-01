@@ -143,7 +143,7 @@ p {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
-.back-to-top {
+/* .back-to-top {
   position: fixed;
   visibility: hidden;
   opacity: 0;
@@ -171,7 +171,7 @@ p {
 .back-to-top.active {
   visibility: visible;
   opacity: 1;
-}
+} */
 
 /*--------------------------------------------------------------
 # Header
@@ -443,9 +443,6 @@ p {
 /*--------------------------------------------------------------
 # Hero (ajustado para melhor leitura)
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Hero (RESPONSIVO - sem height/padding fixo)
---------------------------------------------------------------*/
 #hero {
   position: relative;
   background: url("../img/home-bg.jpg");
@@ -493,12 +490,14 @@ p {
 }
 
 /* Tipografia do hero (sem quebrar no mobile) */
-#hero .hero-card h1,h2 {
+#hero .hero-card h1,
+#hero .hero-card h2 {
   font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
   color: #292929;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 #hero .hero-card p {
@@ -637,7 +636,7 @@ p {
 # Services
 --------------------------------------------------------------*/
 #services {
-  background: #f7f7f7;
+  background: #ffffff;
   position: relative;
   padding-bottom: 80px;
 }
@@ -902,6 +901,7 @@ p {
 #contact {
   height: auto;
   width: 100%;
+  background: #f7f7f7;
 }
 
 .contact-details {
@@ -1113,10 +1113,8 @@ blockquote {
 }
 
 /*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
-#footer {
-  background: #f7f7f7;
+# Footer --------------------------------------------------------------*/ #footer {
+  background: #ffffff;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -1164,6 +1162,121 @@ blockquote {
   font-size: 13px;
 }
 
+/* ------------------------------
+   Cards do Services (B2B)
+------------------------------ */
+#services .service-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .06);
+}
+
+#services .service-card h3 {
+  color: #292929;
+}
+
+#services .service-card p {
+  margin: 0;
+  color: #666;
+  line-height: 22px;
+}
+
+/* ------------------------------
+   FAQ (Bootstrap accordion) — só um ajuste de “cara”
+------------------------------ */
+#faq .accordion-item {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+#faq .accordion-button {
+  font-weight: 600;
+}
+
+#faq .accordion-body {
+  color: #666;
+  line-height: 24px;
+}
+
+/* ------------------------------
+   WhatsApp flutuante (lead capture sempre visível)
+------------------------------ */
+.floating-actions {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.floating-actions a{
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* WhatsApp (agora sem position fixed) */
+.floating-actions .whatsapp-float {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+}
+
+.floating-actions .whatsapp-float i {
+  color: #fff;
+  font-size: 26px;
+  line-height: 0;
+}
+
+/* Back-to-top redondo, no mesmo padrão do WhatsApp */
+.floating-actions .back-to-top{
+  visibility: hidden;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #b8a07e;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+
+  display: none; /* escondido por padrão */
+  align-items: center;
+  justify-content: center;
+
+  transition: transform .15s ease, background .2s ease;
+}
+
+.floating-actions .back-to-top.active {
+  display: flex;
+}
+
+.floating-actions .back-to-top i {
+  font-size: 26px;
+  color: #fff;
+  line-height: 0;
+}
+
+.floating-actions .back-to-top:hover {
+  background: #c6b398;
+  transform: translateY(-1px);
+}
+
+ .back-to-top:hover {
+  background: #c6b398;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+} 
+
 /** Width between 1200x to 0
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
@@ -1205,7 +1318,8 @@ blockquote {
   }
 
   /* About */
-  .head-info .header-content .cmaster h1,h2 {
+  .head-info .header-content .cmaster h1,
+  .head-info .header-content .cmaster  h2 {
     font-size: 32px;
   }
 
@@ -1288,7 +1402,8 @@ blockquote {
   }
 
   /* About */
-  .head-info .header-content h1,h2 {
+  .head-info .header-content h1,
+  .head-info .header-content h2 {
     font-size: 32px;
   }
 
@@ -1371,7 +1486,8 @@ blockquote {
   }
 
   /* About */
-  .head-info .header-content h1,h2 {
+  .head-info .header-content h1,
+  .head-info .header-content h2 {
     font-size: 32px;
   }
 
@@ -1447,7 +1563,8 @@ blockquote {
   }
 
   /* Tipografia: leve redução */
-  #hero .hero-card h1,h2 {
+  #hero .hero-card h1,
+  #hero .hero-card h2 {
     font-size: 22px;
     line-height: 1.2;
     margin-bottom: 8px;
@@ -1476,6 +1593,33 @@ blockquote {
   /* Ícones */
   #hero .hero-card .list-unstyled i {
     font-size: 16px;
+  }
+
+    .paddsection {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .section-title {
+    margin-bottom: 30px;
+  }
+
+  .section-title h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  #services .service-card {
+    padding: 14px !important;
+  }
+
+  #faq .accordion-button {
+    font-size: 14px;
+  }
+
+  #faq .accordion-body {
+    font-size: 13px;
+    line-height: 20px;
   }
 }
 
@@ -1526,9 +1670,11 @@ blockquote {
 
 
   /* About */
-  .head-info .header-content h1 {
+  .head-info .header-content h1,   
+  .head-info .header-content h2 {
     font-size: 32px;
-  }
+  } 
+
 
   #about .div-img-bg {
     padding: 0;
@@ -1642,7 +1788,7 @@ blockquote {
     box-shadow: 0 8px 22px rgba(0, 0, 0, .12);
   }
 
-  #hero .hero-card h1 {
+  #hero .hero-card h1, #hero .hero-card h2 {
     font-size: 18px;
     line-height: 1.15;
     margin-bottom: 8px;
@@ -1741,7 +1887,7 @@ blockquote {
   }
 
   /* About */
-  .head-info .header-content h1 {
+  .head-info .header-content h1, .head-info .header-content h2 {
     font-size: 32px;
   }
 
