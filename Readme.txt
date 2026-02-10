@@ -1,6 +1,6 @@
 Thanks for downloading this template!
 
 Template Name: JC
-Template URL: https://paralegal-londrina.netlify.app/
+Template URL: https://jessicacarolinaparalegal.com.br/
 Author: Kengi Ortega
 
