@@ -1,9 +1,18 @@
+# 1. Migração do domínio antigo (Netlify subdomain) para o domínio novo
+[[redirects]]
+from = "https://paralegal-londrina.netlify.app/*"
+to = "https://jessicacarolinaparalegal.com.br/:splat"
+status = 301
+force = true
+
+# 2. Se alguém abrir /index.html, manda para /
 [[redirects]]
 from = "/index.html"
 to = "/"
 status = 301
-force = true  # <- necessário porque /index.html existe
+force = true
 
+# 3. Fallback (só mantenha se você realmente usa rotas tipo /servicos, /contato, etc.)
 [[redirects]]
 from = "/*"
 to = "/index.html"
